@@ -11,4 +11,5 @@ public class PreferencesUtils {
     public static final String PREF_FILE_NAME = PACKAGE_NAME + "TwitterFollowersPref";
     public static final String KEY_RUN_BEFORE = PACKAGE_NAME + "RunBefore";
     public static final String KEY_LOGGED_IN = PACKAGE_NAME + "LoggedIn";
+    public static final String KEY_LANG = PACKAGE_NAME + "Lang";
 }
