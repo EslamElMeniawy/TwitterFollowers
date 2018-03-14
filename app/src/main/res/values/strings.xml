@@ -6,4 +6,8 @@
     <string name="en">English</string>
     <string name="lang_not_selected">No language selected!</string>
     <string name="next">Next</string>
+    <string name="com.twitter.sdk.android.CONSUMER_KEY">ALzOEOp03qc4KZ5PGgr1WAFzZ</string>
+    <string name="com.twitter.sdk.android.CONSUMER_SECRET">NCiiXlUhtYFKAB4oEaxKpb9TB4CZ1CnaMcFiBlVU9cgmp985F5</string>
+    <string name="login">Login to your twitter account to be able to use app</string>
+    <string name="error_login">Error while login!</string>
 </resources>

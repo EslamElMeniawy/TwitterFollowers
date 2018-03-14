@@ -3,6 +3,8 @@ package elmeniawy.eslam.twitterfollowers.root;
 import android.app.Activity;
 import android.app.Application;
 
+import com.twitter.sdk.android.core.Twitter;
+
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjector;
@@ -48,6 +50,12 @@ public class MyApplication extends Application implements HasActivityInjector {
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
         }
+
+        //
+        // Initialize twitter kit.
+        //
+
+        Twitter.initialize(this);
     }
 
     public ApplicationComponent getComponent() {
