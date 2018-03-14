@@ -18,6 +18,8 @@ public interface SplashMVP {
 
         void openFollowersList();
 
+        void addOpenAnimation();
+
         void closeActivity();
     }
 

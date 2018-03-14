@@ -43,13 +43,16 @@ public class SplashPresenter implements SplashMVP.Presenter {
                         if (model.getRunBefore(view.getSharedPreferences())) {
                             if (model.getLoggedIn(view.getSharedPreferences())) {
                                 view.openFollowersList();
+                                view.addOpenAnimation();
                                 view.closeActivity();
                             } else {
                                 view.openLogin();
+                                view.addOpenAnimation();
                                 view.closeActivity();
                             }
                         } else {
                             view.openWelcome();
+                            view.addOpenAnimation();
                             view.closeActivity();
                         }
 

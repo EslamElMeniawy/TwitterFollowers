@@ -53,18 +53,20 @@ public class ActivitySplash extends AppCompatActivity implements SplashMVP.View 
     @Override
     public void openWelcome() {
         startActivity(new Intent(ActivitySplash.this, ActivityWelcome.class));
-        overridePendingTransition(R.anim.bottom_up, R.anim.fadeout);
     }
 
     @Override
     public void openLogin() {
         startActivity(new Intent(ActivitySplash.this, ActivityLogin.class));
-        overridePendingTransition(R.anim.bottom_up, R.anim.fadeout);
     }
 
     @Override
     public void openFollowersList() {
         startActivity(new Intent(ActivitySplash.this, ActivityFollowersList.class));
+    }
+
+    @Override
+    public void addOpenAnimation() {
         overridePendingTransition(R.anim.bottom_up, R.anim.fadeout);
     }
 
