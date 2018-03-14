@@ -33,4 +33,12 @@ public class MySharedPreferences {
     public String getString(String key) {
         return mSharedPreferences.getString(key, "");
     }
+
+    public void putLong(String key, long data) {
+        mSharedPreferences.edit().putLong(key, data).apply();
+    }
+
+    public long getLong(String key) {
+        return mSharedPreferences.getLong(key, 0);
+    }
 }

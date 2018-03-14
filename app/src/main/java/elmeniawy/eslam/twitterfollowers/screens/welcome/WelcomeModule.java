@@ -12,12 +12,12 @@ import dagger.Provides;
 @Module
 public class WelcomeModule {
     @Provides
-    WelcomeMVP.Presenter providedWelcomPresenter(WelcomeMVP.Model model) {
+    WelcomeMVP.Presenter providedWelcomePresenter(WelcomeMVP.Model model) {
         return new WelcomePresenter(model);
     }
 
     @Provides
-    WelcomeMVP.Model provideWelcomModel(Repository repository) {
+    WelcomeMVP.Model provideWelcomeModel(Repository repository) {
         return new WelcomeModel(repository);
     }
 
