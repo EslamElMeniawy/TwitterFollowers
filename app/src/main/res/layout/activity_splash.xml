@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context="elmeniawy.eslam.twitterfollowers.ActivitySplash">
+    tools:context="elmeniawy.eslam.twitterfollowers.screens.splash.ActivitySplash">
 
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/imageView"

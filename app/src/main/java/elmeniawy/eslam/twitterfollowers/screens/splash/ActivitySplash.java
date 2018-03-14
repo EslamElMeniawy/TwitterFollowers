@@ -1,7 +1,9 @@
-package elmeniawy.eslam.twitterfollowers;
+package elmeniawy.eslam.twitterfollowers.screens.splash;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import elmeniawy.eslam.twitterfollowers.R;
 
 public class ActivitySplash extends AppCompatActivity {
 
