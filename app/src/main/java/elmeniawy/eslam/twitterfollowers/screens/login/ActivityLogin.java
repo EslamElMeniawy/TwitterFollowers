@@ -97,7 +97,8 @@ public class ActivityLogin extends AppCompatActivity implements LoginMVP.View {
 
     @Override
     public void openFollowersList() {
-        startActivity(new Intent(ActivityLogin.this, ActivityFollowersList.class));
+        startActivity(new Intent(ActivityLogin.this, ActivityFollowersList.class)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
     }
 
     @Override

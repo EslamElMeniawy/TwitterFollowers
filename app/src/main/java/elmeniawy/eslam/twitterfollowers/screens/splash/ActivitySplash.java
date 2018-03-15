@@ -52,17 +52,20 @@ public class ActivitySplash extends AppCompatActivity implements SplashMVP.View 
 
     @Override
     public void openWelcome() {
-        startActivity(new Intent(ActivitySplash.this, ActivityWelcome.class));
+        startActivity(new Intent(ActivitySplash.this, ActivityWelcome.class)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
     }
 
     @Override
     public void openLogin() {
-        startActivity(new Intent(ActivitySplash.this, ActivityLogin.class));
+        startActivity(new Intent(ActivitySplash.this, ActivityLogin.class)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
     }
 
     @Override
     public void openFollowersList() {
-        startActivity(new Intent(ActivitySplash.this, ActivityFollowersList.class));
+        startActivity(new Intent(ActivitySplash.this, ActivityFollowersList.class)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
     }
 
     @Override

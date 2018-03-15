@@ -85,7 +85,8 @@ public class ActivityWelcome extends AppCompatActivity implements WelcomeMVP.Vie
 
     @Override
     public void openLogin() {
-        startActivity(new Intent(ActivityWelcome.this, ActivityLogin.class));
+        startActivity(new Intent(ActivityWelcome.this, ActivityLogin.class)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
     }
 
     @Override
