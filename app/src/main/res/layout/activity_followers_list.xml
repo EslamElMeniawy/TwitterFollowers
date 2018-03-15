@@ -6,33 +6,41 @@
     android:layout_height="match_parent"
     tools:context="elmeniawy.eslam.twitterfollowers.screens.followers_list.ActivityFollowersList">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_followers"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/srl_followers"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:clipToPadding="false"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/item_follower" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <android.support.v4.widget.ContentLoadingProgressBar
-        android:id="@+id/pb_loading"
-        style="?android:attr/progressBarStyle"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_followers"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:listitem="@layout/item_follower" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_error"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:textColor="@color/colorAccent"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Error loading" />
 </android.support.constraint.ConstraintLayout>
