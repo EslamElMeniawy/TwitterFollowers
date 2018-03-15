@@ -11,4 +11,7 @@
     <string name="login">Login to your twitter account to be able to use app</string>
     <string name="error_login">Error while login!</string>
     <string name="change_lang">Change Language</string>
+    <string name="no_internet">No Internet connection!</string>
+    <string name="error_get_followers">Error while getting followers!</string>
+    <string name="no_followers">No followers!</string>
 </resources>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="splash_image_width">100dp</dimen>
-    <dimen name="follower_list_image_width">73dp</dimen>
+    <dimen name="follower_list_image_width">48dp</dimen>
 </resources>

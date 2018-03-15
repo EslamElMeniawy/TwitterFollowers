@@ -11,6 +11,7 @@ import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
 import elmeniawy.eslam.twitterfollowers.BuildConfig;
+import elmeniawy.eslam.twitterfollowers.screens.followers_list.FollowersListModule;
 import elmeniawy.eslam.twitterfollowers.screens.login.LoginModule;
 import elmeniawy.eslam.twitterfollowers.screens.splash.SplashModule;
 import elmeniawy.eslam.twitterfollowers.screens.welcome.WelcomeModule;
@@ -43,6 +44,7 @@ public class MyApplication extends Application implements HasActivityInjector {
                 .splashModule(new SplashModule())
                 .welcomeModule(new WelcomeModule())
                 .loginModule(new LoginModule())
+                .followersListModule(new FollowersListModule())
                 .build();
 
         //
