@@ -6,7 +6,7 @@ package elmeniawy.eslam.twitterfollowers.screens.follower_info;
  * Created by Eslam El-Meniawy on 16-Mar-18.
  */
 
-public class TweetViewModel {
+class TweetViewModel {
     //
     // Attributes.
     //
@@ -19,27 +19,27 @@ public class TweetViewModel {
     // Setters and getters.
     //
 
-    public void setTweet(String tweet) {
+    void setTweet(String tweet) {
         this.tweet = tweet;
     }
 
-    public void setRetweet(Integer retweet) {
+    void setRetweet(Integer retweet) {
         this.retweet = retweet;
     }
 
-    public void setFavorite(Integer favorite) {
+    void setFavorite(Integer favorite) {
         this.favorite = favorite;
     }
 
-    public String getTweet() {
+    String getTweet() {
         return tweet;
     }
 
-    public Integer getRetweet() {
+    Integer getRetweet() {
         return retweet;
     }
 
-    public Integer getFavorite() {
+    Integer getFavorite() {
         return favorite;
     }
 }

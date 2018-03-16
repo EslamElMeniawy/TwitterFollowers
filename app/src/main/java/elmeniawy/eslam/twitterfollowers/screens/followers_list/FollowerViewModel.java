@@ -20,7 +20,7 @@ public class FollowerViewModel implements Parcelable {
     private String profileBanner;
     private String profileImage;
 
-    public FollowerViewModel() {
+    FollowerViewModel() {
     }
 
     private FollowerViewModel(Parcel in) {
@@ -60,15 +60,15 @@ public class FollowerViewModel implements Parcelable {
         this.name = name;
     }
 
-    public void setDescription(String description) {
+    void setDescription(String description) {
         this.description = description;
     }
 
-    public void setProfileBanner(String profileBackgroundImage) {
+    void setProfileBanner(String profileBackgroundImage) {
         this.profileBanner = profileBackgroundImage;
     }
 
-    public void setProfileImage(String profileImage) {
+    void setProfileImage(String profileImage) {
         this.profileImage = profileImage;
     }
 
@@ -80,7 +80,7 @@ public class FollowerViewModel implements Parcelable {
         return name;
     }
 
-    public String getDescription() {
+    String getDescription() {
         return description;
     }
 

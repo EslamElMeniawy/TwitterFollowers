@@ -16,7 +16,7 @@ import retrofit2.Call;
 public class FollowerInfoModel implements FollowerInfoMVP.Model {
     private Repository repository;
 
-    public FollowerInfoModel(Repository repository) {
+    FollowerInfoModel(Repository repository) {
         this.repository = repository;
     }
 
