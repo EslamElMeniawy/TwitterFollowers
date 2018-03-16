@@ -14,4 +14,6 @@
     <string name="no_internet">No Internet connection!</string>
     <string name="error_get_followers">Error while getting followers!</string>
     <string name="no_followers">No followers!</string>
+    <string name="error_get_tweets">Error while getting tweets!</string>
+    <string name="no_tweets">No tweets!</string>
 </resources>

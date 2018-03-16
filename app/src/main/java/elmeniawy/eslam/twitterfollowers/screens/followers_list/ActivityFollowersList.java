@@ -85,6 +85,12 @@ public class ActivityFollowersList extends AppCompatActivity implements Follower
         ButterKnife.bind(this);
 
         //
+        // Set timber tag.
+        //
+
+        Timber.tag(ActivityFollowersList.class.getSimpleName());
+
+        //
         // Set swipe refresh layout refresh listener.
         //
 

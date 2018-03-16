@@ -5,6 +5,8 @@ import javax.inject.Singleton;
 import dagger.Component;
 import dagger.android.AndroidInjector;
 import dagger.android.support.AndroidSupportInjectionModule;
+import elmeniawy.eslam.twitterfollowers.screens.follower_info.ActivityFollowerInfo;
+import elmeniawy.eslam.twitterfollowers.screens.follower_info.FollowerInfoModule;
 import elmeniawy.eslam.twitterfollowers.screens.followers_list.ActivityFollowersList;
 import elmeniawy.eslam.twitterfollowers.screens.followers_list.FollowersListModule;
 import elmeniawy.eslam.twitterfollowers.screens.login.ActivityLogin;
@@ -24,7 +26,7 @@ import elmeniawy.eslam.twitterfollowers.storage.preferences.SharedPreferencesMod
 @Singleton
 @Component(modules = {AndroidSupportInjectionModule.class, ApplicationModule.class,
         SharedPreferencesModule.class, SplashModule.class, WelcomeModule.class, LoginModule.class,
-        FollowersListModule.class})
+        FollowersListModule.class, FollowerInfoModule.class})
 public interface ApplicationComponent extends AndroidInjector<MyApplication> {
     void inject(ActivitySplash target);
 
@@ -33,4 +35,6 @@ public interface ApplicationComponent extends AndroidInjector<MyApplication> {
     void inject(ActivityLogin target);
 
     void inject(ActivityFollowersList target);
+
+    void inject(ActivityFollowerInfo target);
 }
