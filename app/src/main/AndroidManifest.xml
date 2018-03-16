@@ -17,7 +17,7 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".screens.splash.ActivitySplash"
-            android:theme="@style/AppThemeNoActionBar">
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,14 +27,13 @@
         <activity android:name=".screens.followers_list.ActivityFollowersList" />
         <activity
             android:name=".screens.login.ActivityLogin"
-            android:theme="@style/AppThemeNoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".screens.welcome.ActivityWelcome"
-            android:theme="@style/AppThemeNoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".screens.follower_info.ActivityFollowerInfo"
-            android:label="@string/title_activity_follower_info"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

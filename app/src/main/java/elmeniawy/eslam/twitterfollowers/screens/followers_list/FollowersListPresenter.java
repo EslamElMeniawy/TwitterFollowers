@@ -140,7 +140,9 @@ public class FollowersListPresenter implements FollowersListMVP.Presenter {
                 followerViewModel
                         .setProfileBackgroundImage(follower.getProfileBackgroundImageUrlHttps());
 
-                followerViewModel.setProfileImage(follower.getProfileImageUrlHttps());
+                followerViewModel.setProfileImage(follower.getProfileImageUrlHttps()
+                        .replace("_normal", "_bigger"));
+
                 followerViewModels.add(followerViewModel);
             }
 

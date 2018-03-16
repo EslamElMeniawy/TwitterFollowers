@@ -7,7 +7,7 @@
     android:fitsSystemWindows="true"
     tools:context="elmeniawy.eslam.twitterfollowers.screens.follower_info.ActivityFollowerInfo">
 
-    <android.support.design.widget.AppBarLayout
+    <elmeniawy.eslam.twitterfollowers.helpers.CustomAppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/app_bar_height"
@@ -31,17 +31,18 @@
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
-    </android.support.design.widget.AppBarLayout>
+    </elmeniawy.eslam.twitterfollowers.helpers.CustomAppBarLayout>
 
     <include layout="@layout/content_activity_follower_info" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/follower_list_image_width"
+        android:layout_height="@dimen/follower_list_image_width"
         android:layout_margin="@dimen/fab_margin"
+        android:scaleType="fitXY"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        app:tint="@color/colorWhite" />
 
 </android.support.design.widget.CoordinatorLayout>

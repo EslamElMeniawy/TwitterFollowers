@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="splash_image_width">100dp</dimen>
-    <dimen name="follower_list_image_width">48dp</dimen>
-    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="follower_list_image_width">73dp</dimen>
+    <dimen name="app_bar_height">190dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
-    <dimen name="text_margin">16dp</dimen>
+    <dimen name="tweet_icon_width">20dp</dimen>
 </resources>
