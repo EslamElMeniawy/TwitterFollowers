@@ -38,6 +38,10 @@ public interface FollowersListMVP {
         void clearFollowers();
 
         void addFollowers(List<FollowerViewModel> followers);
+
+        void openFollowerInfo(FollowerViewModel follower);
+
+        void addOpenAnimation();
     }
 
     interface Presenter {
@@ -46,6 +50,8 @@ public interface FollowersListMVP {
         void loadFollowers();
 
         void refreshFollowers();
+
+        void followerClicked(FollowerViewModel follower);
     }
 
     interface Model {

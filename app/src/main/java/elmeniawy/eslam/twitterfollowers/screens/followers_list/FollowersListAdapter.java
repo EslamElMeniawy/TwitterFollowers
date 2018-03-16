@@ -93,6 +93,11 @@ class FollowersListAdapter extends
         @OnClick
         void itemClicked() {
             Timber.i("Item clicked at position: %d.", getLayoutPosition());
+
+            if (context instanceof ActivityFollowersList) {
+                ((ActivityFollowersList) context).presenter
+                        .followerClicked(list.get(getLayoutPosition()));
+            }
         }
     }
 }

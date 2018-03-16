@@ -1,5 +1,6 @@
 package elmeniawy.eslam.twitterfollowers.screens.followers_list;
 
+import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,7 +23,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import elmeniawy.eslam.twitterfollowers.R;
 import elmeniawy.eslam.twitterfollowers.root.MyApplication;
+import elmeniawy.eslam.twitterfollowers.screens.follower_info.ActivityFollowerInfo;
 import elmeniawy.eslam.twitterfollowers.storage.preferences.MySharedPreferences;
+import elmeniawy.eslam.twitterfollowers.utils.ConstantUtils;
 import timber.log.Timber;
 
 import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
@@ -212,5 +215,18 @@ public class ActivityFollowersList extends AppCompatActivity implements Follower
     public void addFollowers(List<FollowerViewModel> followers) {
         followersList.addAll(followers);
         followersListAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void openFollowerInfo(FollowerViewModel follower) {
+        startActivity(new Intent(ActivityFollowersList.this,
+                ActivityFollowerInfo.class)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                .putExtra(ConstantUtils.INTENT_KEY_FOLLOWER, follower));
+    }
+
+    @Override
+    public void addOpenAnimation() {
+        overridePendingTransition(R.anim.bottom_up, R.anim.fadeout);
     }
 }

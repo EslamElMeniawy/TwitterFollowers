@@ -53,6 +53,13 @@ public class FollowersListPresenter implements FollowersListMVP.Presenter {
         loadFirstTime();
     }
 
+    @Override
+    public void followerClicked(FollowerViewModel follower) {
+        if (view != null) {
+            view.openFollowerInfo(follower);
+        }
+    }
+
     private void loadFirstTime() {
         if (view != null) {
             view.showLoading();
@@ -61,6 +68,7 @@ public class FollowersListPresenter implements FollowersListMVP.Presenter {
                     .getFollowers(model.getUserId(view.getSharedPreferences()));
 
             call.enqueue(new Callback<FollowersResponse>() {
+                @SuppressWarnings("ConstantConditions")
                 @Override
                 public void onResponse(@NonNull Call<FollowersResponse> call,
                                        @NonNull Response<FollowersResponse> response) {
