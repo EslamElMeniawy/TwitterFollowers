@@ -17,7 +17,7 @@ public class FollowerViewModel implements Parcelable {
     private Long id;
     private String name;
     private String description;
-    private String profileBackgroundImage;
+    private String profileBanner;
     private String profileImage;
 
     public FollowerViewModel() {
@@ -32,7 +32,7 @@ public class FollowerViewModel implements Parcelable {
 
         name = in.readString();
         description = in.readString();
-        profileBackgroundImage = in.readString();
+        profileBanner = in.readString();
         profileImage = in.readString();
     }
 
@@ -64,8 +64,8 @@ public class FollowerViewModel implements Parcelable {
         this.description = description;
     }
 
-    public void setProfileBackgroundImage(String profileBackgroundImage) {
-        this.profileBackgroundImage = profileBackgroundImage;
+    public void setProfileBanner(String profileBackgroundImage) {
+        this.profileBanner = profileBackgroundImage;
     }
 
     public void setProfileImage(String profileImage) {
@@ -84,8 +84,8 @@ public class FollowerViewModel implements Parcelable {
         return description;
     }
 
-    public String getProfileBackgroundImage() {
-        return profileBackgroundImage;
+    public String getProfileBanner() {
+        return profileBanner;
     }
 
     public String getProfileImage() {
@@ -108,7 +108,7 @@ public class FollowerViewModel implements Parcelable {
 
         dest.writeString(name);
         dest.writeString(description);
-        dest.writeString(profileBackgroundImage);
+        dest.writeString(profileBanner);
         dest.writeString(profileImage);
     }
 }

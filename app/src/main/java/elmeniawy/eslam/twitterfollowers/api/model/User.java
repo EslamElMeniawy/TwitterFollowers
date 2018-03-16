@@ -18,9 +18,9 @@ public class User {
     @Expose
     private String description;
 
-    @SerializedName("profile_background_image_url_https")
+    @SerializedName("profile_banner_url")
     @Expose
-    private String profileBackgroundImageUrlHttps;
+    private String profileBanner;
 
     @SerializedName("profile_image_url_https")
     @Expose
@@ -50,12 +50,12 @@ public class User {
         this.description = description;
     }
 
-    public String getProfileBackgroundImageUrlHttps() {
-        return profileBackgroundImageUrlHttps;
+    public String getProfileBanner() {
+        return profileBanner;
     }
 
-    public void setProfileBackgroundImageUrlHttps(String profileBackgroundImageUrlHttps) {
-        this.profileBackgroundImageUrlHttps = profileBackgroundImageUrlHttps;
+    public void setProfileBanner(String profileBackgroundImageUrlHttps) {
+        this.profileBanner = profileBackgroundImageUrlHttps;
     }
 
     public String getProfileImageUrlHttps() {

@@ -136,9 +136,7 @@ public class FollowersListPresenter implements FollowersListMVP.Presenter {
                 followerViewModel.setId(follower.getId());
                 followerViewModel.setName(follower.getName());
                 followerViewModel.setDescription(follower.getDescription());
-
-                followerViewModel
-                        .setProfileBackgroundImage(follower.getProfileBackgroundImageUrlHttps());
+                followerViewModel.setProfileBanner(follower.getProfileBanner());
 
                 followerViewModel.setProfileImage(follower.getProfileImageUrlHttps()
                         .replace("_normal", "_bigger"));
