@@ -194,6 +194,21 @@ public class ActivityFollowerInfo extends AppCompatActivity implements FollowerI
     }
 
     @Override
+    public void setInternetError() {
+        tvError.setText(noInternet);
+    }
+
+    @Override
+    public void setGetError() {
+        tvError.setText(errorGetTweets);
+    }
+
+    @Override
+    public void setNoTweets() {
+        tvError.setText(noTweets);
+    }
+
+    @Override
     public void setTitle(String title) {
         toolbar.setTitle(title);
     }

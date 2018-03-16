@@ -16,5 +16,5 @@ import retrofit2.Call;
 public interface Repository {
     String getLang(MySharedPreferences sharedPreferences);
 
-    Call<List<Tweet>> getFollowers(long userId);
+    Call<List<Tweet>> getTweets(long userId);
 }

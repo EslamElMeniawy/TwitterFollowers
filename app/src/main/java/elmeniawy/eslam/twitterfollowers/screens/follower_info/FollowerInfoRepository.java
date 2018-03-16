@@ -24,7 +24,7 @@ public class FollowerInfoRepository implements Repository {
     }
 
     @Override
-    public Call<List<Tweet>> getFollowers(long userId) {
+    public Call<List<Tweet>> getTweets(long userId) {
         TwitterApiClient twitterApiClient = TwitterCore.getInstance().getApiClient();
         StatusesService statusesService = twitterApiClient.getStatusesService();
 

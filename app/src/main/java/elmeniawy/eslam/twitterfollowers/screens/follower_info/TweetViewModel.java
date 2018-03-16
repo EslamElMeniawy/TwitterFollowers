@@ -12,8 +12,8 @@ public class TweetViewModel {
     //
 
     private String tweet;
-    private Long retweet;
-    private Long favorite;
+    private Integer retweet;
+    private Integer favorite;
 
     //
     // Setters and getters.
@@ -23,11 +23,11 @@ public class TweetViewModel {
         this.tweet = tweet;
     }
 
-    public void setRetweet(Long retweet) {
+    public void setRetweet(Integer retweet) {
         this.retweet = retweet;
     }
 
-    public void setFavorite(Long favorite) {
+    public void setFavorite(Integer favorite) {
         this.favorite = favorite;
     }
 
@@ -35,11 +35,11 @@ public class TweetViewModel {
         return tweet;
     }
 
-    public Long getRetweet() {
+    public Integer getRetweet() {
         return retweet;
     }
 
-    public Long getFavorite() {
+    public Integer getFavorite() {
         return favorite;
     }
 }

@@ -26,6 +26,12 @@ public interface FollowerInfoMVP {
 
         void hideError();
 
+        void setInternetError();
+
+        void setGetError();
+
+        void setNoTweets();
+
         void setTitle(String title);
 
         void loadProfileImage(String url);
@@ -74,6 +80,6 @@ public interface FollowerInfoMVP {
     interface Model {
         String getLang(MySharedPreferences sharedPreferences);
 
-        Call<List<Tweet>> getFollowers(long userId);
+        Call<List<Tweet>> getTweets(long userId);
     }
 }

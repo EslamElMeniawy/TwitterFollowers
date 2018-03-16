@@ -26,7 +26,7 @@ public class FollowerInfoModel implements FollowerInfoMVP.Model {
     }
 
     @Override
-    public Call<List<Tweet>> getFollowers(long userId) {
-        return repository.getFollowers(userId);
+    public Call<List<Tweet>> getTweets(long userId) {
+        return repository.getTweets(userId);
     }
 }
