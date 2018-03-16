@@ -61,10 +61,12 @@ class FollowersListAdapter extends
         Timber.i("Name: %s.", currentFollower.getName());
         holder.tvName.setText(currentFollower.getName());
         Timber.i("Bio: %s.", currentFollower.getDescription());
-        holder.tvBio.setText(currentFollower.getDescription());
 
-        if (currentFollower.getDescription().isEmpty()) {
+        if (currentFollower.getDescription() == null || currentFollower.getDescription().isEmpty()) {
             holder.tvBio.setVisibility(View.GONE);
+        } else {
+            holder.tvBio.setText(currentFollower.getDescription());
+            holder.tvBio.setVisibility(View.VISIBLE);
         }
     }
 
