@@ -106,12 +106,6 @@ public class ActivityFollowerInfo extends BaseActivity implements FollowerInfoMV
         setSupportActionBar(toolbar);
 
         //
-        // Set timber tag.
-        //
-
-        Timber.tag(ActivityFollowerInfo.class.getSimpleName());
-
-        //
         // Set follower.
         //
 

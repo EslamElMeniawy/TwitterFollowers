@@ -35,7 +35,6 @@ public class FollowersListPresenter implements FollowersListMVP.Presenter {
 
     FollowersListPresenter(FollowersListMVP.Model model) {
         this.model = model;
-        Timber.tag(FollowersListPresenter.class.getSimpleName());
     }
 
     @Override

@@ -71,12 +71,6 @@ public class MyApplication extends Application implements HasActivityInjector {
         }
 
         //
-        // Set timber tag.
-        //
-
-        Timber.tag(MyApplication.class.getSimpleName());
-
-        //
         // Initialize twitter kit.
         //
 

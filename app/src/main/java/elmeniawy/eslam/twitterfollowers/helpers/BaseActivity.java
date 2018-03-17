@@ -34,12 +34,6 @@ public class BaseActivity extends AppCompatActivity {
         ((MyApplication) getApplication()).getComponent().inject(this);
 
         //
-        // Set timber tag.
-        //
-
-        Timber.tag(BaseActivity.class.getSimpleName());
-
-        //
         // Set app language.
         //
 

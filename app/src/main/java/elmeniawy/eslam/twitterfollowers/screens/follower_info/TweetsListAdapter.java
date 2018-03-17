@@ -34,7 +34,6 @@ class TweetsListAdapter extends RecyclerView.Adapter<TweetsListAdapter.ViewHolde
                 .from(parent.getContext())
                 .inflate(R.layout.item_tweet, parent, false);
 
-        Timber.tag(TweetsListAdapter.class.getSimpleName());
         return new ViewHolderTweetsList(itemView);
     }
 

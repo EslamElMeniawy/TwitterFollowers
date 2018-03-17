@@ -42,7 +42,6 @@ class FollowersListAdapter extends
                 .from(parent.getContext())
                 .inflate(R.layout.item_follower, parent, false);
 
-        Timber.tag(FollowersListAdapter.class.getSimpleName());
         return new ViewHolderFollowersList(itemView);
     }
 

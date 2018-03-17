@@ -25,7 +25,6 @@ public class LoginPresenter implements LoginMVP.Presenter {
 
     LoginPresenter(LoginMVP.Model model) {
         this.model = model;
-        Timber.tag(LoginPresenter.class.getSimpleName());
     }
 
     @Override
