@@ -7,13 +7,14 @@ import android.os.Bundle;
 import javax.inject.Inject;
 
 import elmeniawy.eslam.twitterfollowers.R;
+import elmeniawy.eslam.twitterfollowers.helpers.BaseActivity;
 import elmeniawy.eslam.twitterfollowers.root.MyApplication;
 import elmeniawy.eslam.twitterfollowers.screens.followers_list.ActivityFollowersList;
 import elmeniawy.eslam.twitterfollowers.screens.login.ActivityLogin;
 import elmeniawy.eslam.twitterfollowers.screens.welcome.ActivityWelcome;
 import elmeniawy.eslam.twitterfollowers.storage.preferences.MySharedPreferences;
 
-public class ActivitySplash extends AppCompatActivity implements SplashMVP.View {
+public class ActivitySplash extends BaseActivity implements SplashMVP.View {
     @Inject
     MySharedPreferences mySharedPreferences;
 

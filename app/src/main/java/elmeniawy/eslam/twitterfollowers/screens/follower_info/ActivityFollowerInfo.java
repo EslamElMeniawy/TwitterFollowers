@@ -24,13 +24,14 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 import elmeniawy.eslam.twitterfollowers.R;
+import elmeniawy.eslam.twitterfollowers.helpers.BaseActivity;
 import elmeniawy.eslam.twitterfollowers.helpers.CustomAppBarLayout;
 import elmeniawy.eslam.twitterfollowers.root.MyApplication;
 import elmeniawy.eslam.twitterfollowers.storage.preferences.MySharedPreferences;
 import elmeniawy.eslam.twitterfollowers.utils.ConstantUtils;
 import timber.log.Timber;
 
-public class ActivityFollowerInfo extends AppCompatActivity implements FollowerInfoMVP.View {
+public class ActivityFollowerInfo extends BaseActivity implements FollowerInfoMVP.View {
     @Inject
     MySharedPreferences mySharedPreferences;
 

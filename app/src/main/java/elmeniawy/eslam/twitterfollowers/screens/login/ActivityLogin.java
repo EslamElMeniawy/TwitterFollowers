@@ -17,11 +17,12 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import elmeniawy.eslam.twitterfollowers.R;
+import elmeniawy.eslam.twitterfollowers.helpers.BaseActivity;
 import elmeniawy.eslam.twitterfollowers.root.MyApplication;
 import elmeniawy.eslam.twitterfollowers.screens.followers_list.ActivityFollowersList;
 import elmeniawy.eslam.twitterfollowers.storage.preferences.MySharedPreferences;
 
-public class ActivityLogin extends AppCompatActivity implements LoginMVP.View {
+public class ActivityLogin extends BaseActivity implements LoginMVP.View {
     @Inject
     MySharedPreferences mySharedPreferences;
 

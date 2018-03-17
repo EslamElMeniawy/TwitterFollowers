@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">متابعي تويتر</string>
+    <string name="welcome">مرحباً بك في تطبيق متابعي تويتر</string>
+    <string name="select_lang">برجاء اختيار لغة التطبيق</string>
+    <string name="ar">العربية</string>
+    <string name="en">الانجليزية</string>
+    <string name="lang_not_selected">لم يتم اختيار اللفة!</string>
+    <string name="next">التالي</string>
+    <string name="login">قم بتسجيل الدخول باستخدام حساب تويتر الخاص بك لتتمكن من استخدام التطبيق</string>
+    <string name="error_login">خطأ اثناء الدخول</string>
+    <string name="change_lang">تغيير اللغة</string>
+    <string name="no_internet">لا يوجد اتصال بالانترنت!</string>
+    <string name="error_get_followers">خطأ اثناء تحميل المتابعين!</string>
+    <string name="no_followers">لا يوجد متابعين!</string>
+    <string name="error_get_tweets">خطأ اثناء تحميل التغريدات!</string>
+    <string name="no_tweets">لا يوجد تغريدات!</string>
+</resources>

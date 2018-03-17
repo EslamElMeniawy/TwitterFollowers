@@ -22,6 +22,7 @@ import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import elmeniawy.eslam.twitterfollowers.R;
+import elmeniawy.eslam.twitterfollowers.helpers.BaseActivity;
 import elmeniawy.eslam.twitterfollowers.root.MyApplication;
 import elmeniawy.eslam.twitterfollowers.screens.follower_info.ActivityFollowerInfo;
 import elmeniawy.eslam.twitterfollowers.storage.preferences.MySharedPreferences;
@@ -30,7 +31,7 @@ import timber.log.Timber;
 
 import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
 
-public class ActivityFollowersList extends AppCompatActivity implements FollowersListMVP.View {
+public class ActivityFollowersList extends BaseActivity implements FollowersListMVP.View {
     @Inject
     MySharedPreferences mySharedPreferences;
 
