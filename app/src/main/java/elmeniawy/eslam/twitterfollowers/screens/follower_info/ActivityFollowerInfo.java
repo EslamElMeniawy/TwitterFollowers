@@ -229,6 +229,8 @@ public class ActivityFollowerInfo extends BaseActivity implements FollowerInfoMV
         Picasso
                 .get()
                 .load(url)
+                .placeholder(R.drawable.bg)
+                .error(R.drawable.bg)
                 .into(background);
     }
 
