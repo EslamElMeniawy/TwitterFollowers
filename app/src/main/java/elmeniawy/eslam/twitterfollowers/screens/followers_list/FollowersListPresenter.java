@@ -17,7 +17,9 @@ import elmeniawy.eslam.twitterfollowers.api.model.FollowersResponse;
 import elmeniawy.eslam.twitterfollowers.api.model.User;
 import elmeniawy.eslam.twitterfollowers.storage.database.entities.FollowerEntity;
 import elmeniawy.eslam.twitterfollowers.utils.ConstantUtils;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -173,39 +175,103 @@ public class FollowersListPresenter implements FollowersListMVP.Presenter {
                 public void onFailure(@NonNull Call<FollowersResponse> call, @NonNull Throwable t) {
                     Timber.e(t);
                     mLoadingItems = false;
-
-                    if (t instanceof ConnectException
-                            || t instanceof SocketTimeoutException
-                            || t instanceof UnknownHostException
-                            || t instanceof TimeoutException) {
-                        if (cursor == -1 && view.getFollowersListSize() <= 0) {
-                            //
-                            // Show internet error through text view.
-                            //
-
-                            view.setInternetError();
-                            view.hideList();
-                            view.showError();
-                        } else {
-                            //
-                            // Show internet error through toast.
-                            //
-
-                            view.showInternetError();
-                        }
-
-                        view.hideLoading();
-                    } else {
-                        showGetError(cursor);
-                    }
+                    showError(t, cursor);
                 }
             });
         }
     }
 
-    private void showGetError(long cursor) {
+    private void showError(Throwable t, long oldCursor) {
         if (view != null) {
-            if (cursor == -1 && view.getFollowersListSize() <= 0) {
+            if (t instanceof ConnectException
+                    || t instanceof SocketTimeoutException
+                    || t instanceof UnknownHostException
+                    || t instanceof TimeoutException) {
+                showInternetError(oldCursor);
+            } else {
+                showGetError(oldCursor);
+            }
+        }
+    }
+
+    private void showInternetError(long oldCursor) {
+        if (view != null) {
+            if (oldCursor == -1 && view.getFollowersListSize() <= 0) {
+                disposable = model
+                        .getFollowersOffline(view.getDatabase())
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(followerEntityList -> {
+                            if (followerEntityList != null && followerEntityList.size() > 0) {
+                                //
+                                // Map entities to view model.
+                                //
+
+                                List<FollowerViewModel> followerViewModels = new ArrayList<>();
+
+                                for (FollowerEntity follower :
+                                        followerEntityList) {
+                                    Timber.i("Converting: %s.", gson.toJson(follower));
+                                    FollowerViewModel followerViewModel = new FollowerViewModel();
+                                    followerViewModel.setId(follower.getId());
+                                    followerViewModel.setName(follower.getName());
+                                    followerViewModel.setDescription(follower.getDescription());
+                                    followerViewModel.setProfileBanner(follower.getProfileBanner());
+                                    followerViewModel.setProfileImage(follower.getProfileImage());
+                                    followerViewModels.add(followerViewModel);
+                                }
+
+                                //
+                                // Set results to view.
+                                //
+
+                                view.clearFollowers();
+                                view.addFollowers(followerViewModels);
+                                view.hideLoading();
+
+                                //
+                                // Show internet error through toast.
+                                //
+
+                                showInternetErrorToast();
+                            } else {
+                                //
+                                // Show internet error through text view.
+                                //
+                                showInternetErrorTv();
+                            }
+                        });
+
+
+            } else {
+                //
+                // Show internet error through toast.
+                //
+
+                showInternetErrorToast();
+            }
+        }
+    }
+
+    private void showInternetErrorTv() {
+        if (view != null) {
+            view.setInternetError();
+            view.hideList();
+            view.showError();
+            view.hideLoading();
+        }
+    }
+
+    private void showInternetErrorToast() {
+        if (view != null) {
+            view.showInternetError();
+            view.hideLoading();
+        }
+    }
+
+    private void showGetError(long oldCursor) {
+        if (view != null) {
+            if (oldCursor == -1 && view.getFollowersListSize() <= 0) {
                 //
                 // Show get error through text view.
                 //
