@@ -104,6 +104,20 @@ public class ActivityFollowersList extends BaseActivity implements FollowersList
         }
 
         //
+        // Get followers list.
+        //
+
+        if (savedInstanceState != null) {
+            Timber.i("Saved instance available.\nGetting followers list.");
+
+            followersList = savedInstanceState
+                    .getParcelableArrayList(ConstantUtils.BUNDLE_KEY_FOLLOWERS);
+
+            Timber.i("Got followers list: %s.", followersList);
+            Timber.i("Followers list size: %d.", followersList.size());
+        }
+
+        //
         // Set swipe refresh layout refresh listener.
         //
 
@@ -160,6 +174,22 @@ public class ActivityFollowersList extends BaseActivity implements FollowersList
         super.onResume();
         presenter.setView(this);
         presenter.loadFollowers();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        //
+        // Save followers list.
+        //
+
+        Timber.i("Saving followers list.");
+        Timber.i("Followers list to save: %s.", followersList);
+        Timber.i("Followers list size: %d.", followersList.size());
+
+        outState.putParcelableArrayList(ConstantUtils.BUNDLE_KEY_FOLLOWERS,
+                new ArrayList<>(followersList));
     }
 
     @Override

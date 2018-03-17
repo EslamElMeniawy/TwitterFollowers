@@ -10,4 +10,5 @@ public class ConstantUtils {
     public static final String LANG_AR = "ar";
     public static final String LANG_EN = "en";
     public static final String INTENT_KEY_FOLLOWER = "Follower";
+    public static final String BUNDLE_KEY_FOLLOWERS = "FollowersList";
 }
