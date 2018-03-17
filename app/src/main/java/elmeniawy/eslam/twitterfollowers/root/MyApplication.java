@@ -15,6 +15,7 @@ import elmeniawy.eslam.twitterfollowers.BuildConfig;
 import elmeniawy.eslam.twitterfollowers.helpers.LocalHelper;
 import elmeniawy.eslam.twitterfollowers.screens.follower_info.FollowerInfoModule;
 import elmeniawy.eslam.twitterfollowers.screens.followers_list.FollowersListModule;
+import elmeniawy.eslam.twitterfollowers.screens.image_browser.BrowseImageModule;
 import elmeniawy.eslam.twitterfollowers.screens.login.LoginModule;
 import elmeniawy.eslam.twitterfollowers.screens.splash.SplashModule;
 import elmeniawy.eslam.twitterfollowers.screens.welcome.WelcomeModule;
@@ -54,6 +55,7 @@ public class MyApplication extends Application implements HasActivityInjector {
                 .loginModule(new LoginModule())
                 .followersListModule(new FollowersListModule())
                 .followerInfoModule(new FollowerInfoModule())
+                .browseImageModule(new BrowseImageModule())
                 .build();
 
         //

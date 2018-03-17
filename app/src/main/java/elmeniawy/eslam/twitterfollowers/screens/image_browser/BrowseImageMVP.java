@@ -25,6 +25,14 @@ public interface BrowseImageMVP {
         void setImage(String image);
 
         void setView(BrowseImageMVP.View view);
+
+        void loadImage();
+
+        void imageLoadSuccess();
+
+        void imageLoadFail();
+
+        void backClicked();
     }
 
     interface Model {

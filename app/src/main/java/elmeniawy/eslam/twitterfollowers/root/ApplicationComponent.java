@@ -10,6 +10,8 @@ import elmeniawy.eslam.twitterfollowers.screens.follower_info.ActivityFollowerIn
 import elmeniawy.eslam.twitterfollowers.screens.follower_info.FollowerInfoModule;
 import elmeniawy.eslam.twitterfollowers.screens.followers_list.ActivityFollowersList;
 import elmeniawy.eslam.twitterfollowers.screens.followers_list.FollowersListModule;
+import elmeniawy.eslam.twitterfollowers.screens.image_browser.ActivityBrowseImage;
+import elmeniawy.eslam.twitterfollowers.screens.image_browser.BrowseImageModule;
 import elmeniawy.eslam.twitterfollowers.screens.login.ActivityLogin;
 import elmeniawy.eslam.twitterfollowers.screens.login.LoginModule;
 import elmeniawy.eslam.twitterfollowers.screens.splash.ActivitySplash;
@@ -27,7 +29,7 @@ import elmeniawy.eslam.twitterfollowers.storage.preferences.SharedPreferencesMod
 @Singleton
 @Component(modules = {AndroidSupportInjectionModule.class, ApplicationModule.class,
         SharedPreferencesModule.class, SplashModule.class, WelcomeModule.class, LoginModule.class,
-        FollowersListModule.class, FollowerInfoModule.class})
+        FollowersListModule.class, FollowerInfoModule.class, BrowseImageModule.class})
 public interface ApplicationComponent extends AndroidInjector<MyApplication> {
     void inject(BaseActivity target);
 
@@ -40,4 +42,6 @@ public interface ApplicationComponent extends AndroidInjector<MyApplication> {
     void inject(ActivityFollowersList target);
 
     void inject(ActivityFollowerInfo target);
+
+    void inject(ActivityBrowseImage target);
 }
