@@ -4,6 +4,7 @@ import java.util.List;
 
 import elmeniawy.eslam.twitterfollowers.api.model.FollowersResponse;
 import elmeniawy.eslam.twitterfollowers.api.model.User;
+import elmeniawy.eslam.twitterfollowers.storage.database.ApplicationDatabase;
 import elmeniawy.eslam.twitterfollowers.storage.preferences.MySharedPreferences;
 import retrofit2.Call;
 
@@ -16,6 +17,8 @@ import retrofit2.Call;
 public interface FollowersListMVP {
     interface View {
         MySharedPreferences getSharedPreferences();
+
+        ApplicationDatabase getDatabase();
 
         void showLoading();
 

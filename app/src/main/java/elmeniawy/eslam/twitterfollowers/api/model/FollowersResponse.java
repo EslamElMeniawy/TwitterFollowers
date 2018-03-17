@@ -6,7 +6,6 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class FollowersResponse {
-
     @SerializedName("users")
     @Expose
     private List<User> users = null;
@@ -23,24 +22,11 @@ public class FollowersResponse {
         return users;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
-
     public Long getNextCursor() {
         return nextCursor;
-    }
-
-    public void setNextCursor(Long nextCursor) {
-        this.nextCursor = nextCursor;
     }
 
     public Long getPreviousCursor() {
         return previousCursor;
     }
-
-    public void setPreviousCursor(Long previousCursor) {
-        this.previousCursor = previousCursor;
-    }
-
 }

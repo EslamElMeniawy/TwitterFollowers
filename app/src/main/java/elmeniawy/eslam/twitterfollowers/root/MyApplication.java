@@ -19,6 +19,7 @@ import elmeniawy.eslam.twitterfollowers.screens.image_browser.BrowseImageModule;
 import elmeniawy.eslam.twitterfollowers.screens.login.LoginModule;
 import elmeniawy.eslam.twitterfollowers.screens.splash.SplashModule;
 import elmeniawy.eslam.twitterfollowers.screens.welcome.WelcomeModule;
+import elmeniawy.eslam.twitterfollowers.storage.database.ApplicationDatabaseModule;
 import elmeniawy.eslam.twitterfollowers.storage.preferences.MySharedPreferences;
 import elmeniawy.eslam.twitterfollowers.storage.preferences.SharedPreferencesModule;
 import elmeniawy.eslam.twitterfollowers.utils.PreferencesUtils;
@@ -50,6 +51,7 @@ public class MyApplication extends Application implements HasActivityInjector {
         component = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
                 .sharedPreferencesModule(new SharedPreferencesModule())
+                .applicationDatabaseModule(new ApplicationDatabaseModule())
                 .splashModule(new SplashModule())
                 .welcomeModule(new WelcomeModule())
                 .loginModule(new LoginModule())
@@ -108,17 +110,4 @@ public class MyApplication extends Application implements HasActivityInjector {
     public ApplicationComponent getComponent() {
         return component;
     }
-
-//    private void setLocale() {
-//        final Resources resources = getResources();
-//        final Configuration configuration = resources.getConfiguration();
-//
-//        final Locale locale = LocalHelper
-//                .getLocale(mySharedPreferences.getString(PreferencesUtils.KEY_LANG));
-//
-//        if (!configuration.locale.equals(locale)) {
-//            configuration.setLocale(locale);
-//            resources.updateConfiguration(configuration, resources.getDisplayMetrics());
-//        }
-//    }
 }

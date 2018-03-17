@@ -18,6 +18,7 @@ import elmeniawy.eslam.twitterfollowers.screens.splash.ActivitySplash;
 import elmeniawy.eslam.twitterfollowers.screens.splash.SplashModule;
 import elmeniawy.eslam.twitterfollowers.screens.welcome.ActivityWelcome;
 import elmeniawy.eslam.twitterfollowers.screens.welcome.WelcomeModule;
+import elmeniawy.eslam.twitterfollowers.storage.database.ApplicationDatabaseModule;
 import elmeniawy.eslam.twitterfollowers.storage.preferences.SharedPreferencesModule;
 
 /**
@@ -28,8 +29,9 @@ import elmeniawy.eslam.twitterfollowers.storage.preferences.SharedPreferencesMod
 
 @Singleton
 @Component(modules = {AndroidSupportInjectionModule.class, ApplicationModule.class,
-        SharedPreferencesModule.class, SplashModule.class, WelcomeModule.class, LoginModule.class,
-        FollowersListModule.class, FollowerInfoModule.class, BrowseImageModule.class})
+        SharedPreferencesModule.class, ApplicationDatabaseModule.class, SplashModule.class,
+        WelcomeModule.class, LoginModule.class, FollowersListModule.class, FollowerInfoModule.class,
+        BrowseImageModule.class})
 public interface ApplicationComponent extends AndroidInjector<MyApplication> {
     void inject(BaseActivity target);
 

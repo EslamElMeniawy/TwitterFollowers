@@ -26,6 +26,7 @@ import elmeniawy.eslam.twitterfollowers.R;
 import elmeniawy.eslam.twitterfollowers.helpers.BaseActivity;
 import elmeniawy.eslam.twitterfollowers.root.MyApplication;
 import elmeniawy.eslam.twitterfollowers.screens.follower_info.ActivityFollowerInfo;
+import elmeniawy.eslam.twitterfollowers.storage.database.ApplicationDatabase;
 import elmeniawy.eslam.twitterfollowers.storage.preferences.MySharedPreferences;
 import elmeniawy.eslam.twitterfollowers.utils.ConstantUtils;
 import timber.log.Timber;
@@ -35,6 +36,9 @@ import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
 public class ActivityFollowersList extends BaseActivity implements FollowersListMVP.View {
     @Inject
     MySharedPreferences mySharedPreferences;
+
+    @Inject
+    ApplicationDatabase database;
 
     @Inject
     FollowersListMVP.Presenter presenter;
@@ -212,6 +216,11 @@ public class ActivityFollowersList extends BaseActivity implements FollowersList
     @Override
     public MySharedPreferences getSharedPreferences() {
         return mySharedPreferences;
+    }
+
+    @Override
+    public ApplicationDatabase getDatabase() {
+        return database;
     }
 
     @Override
