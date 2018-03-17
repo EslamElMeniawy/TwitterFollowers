@@ -32,11 +32,9 @@ public class CustomAppBarLayout extends AppBarLayout implements Target {
 
     @Override
     public void onBitmapFailed(Exception e, Drawable errorDrawable) {
-        setBackground(errorDrawable);
     }
 
     @Override
     public void onPrepareLoad(Drawable placeHolderDrawable) {
-        setBackground(placeHolderDrawable);
     }
 }
