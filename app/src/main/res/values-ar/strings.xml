@@ -15,4 +15,5 @@
     <string name="no_followers">لا يوجد متابعين!</string>
     <string name="error_get_tweets">خطأ اثناء تحميل التغريدات!</string>
     <string name="no_tweets">لا يوجد تغريدات!</string>
+    <string name="error_loading_image">خطأ اثناء تحميل الصورة!</string>
 </resources>

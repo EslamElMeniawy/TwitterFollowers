@@ -133,14 +133,16 @@ public class FollowerInfoPresenter implements FollowerInfoMVP.Presenter {
 
     @Override
     public void profileClicked() {
-        if (view != null && follower != null) {
+        if (view != null && follower != null &&
+                follower.getProfileImage() != null && !follower.getProfileImage().isEmpty()) {
             view.openImage(follower.getProfileImage().replace("_bigger", ""));
         }
     }
 
     @Override
     public void bannerClicked() {
-        if (view != null && follower != null) {
+        if (view != null && follower != null &&
+                follower.getProfileBanner() != null && !follower.getProfileBanner().isEmpty()) {
             view.openImage(follower.getProfileBanner());
         }
     }

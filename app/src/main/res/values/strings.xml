@@ -16,4 +16,5 @@
     <string name="no_followers">No followers!</string>
     <string name="error_get_tweets">Error while getting tweets!</string>
     <string name="no_tweets">No tweets!</string>
+    <string name="error_loading_image">Error loading image!</string>
 </resources>

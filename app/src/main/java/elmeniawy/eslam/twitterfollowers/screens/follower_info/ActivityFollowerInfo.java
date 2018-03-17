@@ -1,5 +1,6 @@
 package elmeniawy.eslam.twitterfollowers.screens.follower_info;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -26,6 +27,7 @@ import elmeniawy.eslam.twitterfollowers.R;
 import elmeniawy.eslam.twitterfollowers.helpers.BaseActivity;
 import elmeniawy.eslam.twitterfollowers.helpers.CustomAppBarLayout;
 import elmeniawy.eslam.twitterfollowers.root.MyApplication;
+import elmeniawy.eslam.twitterfollowers.screens.image_browser.ActivityBrowseImage;
 import elmeniawy.eslam.twitterfollowers.utils.ConstantUtils;
 import timber.log.Timber;
 
@@ -234,7 +236,10 @@ public class ActivityFollowerInfo extends BaseActivity implements FollowerInfoMV
 
     @Override
     public void openImage(String image) {
-
+        startActivity(new Intent(ActivityFollowerInfo.this,
+                ActivityBrowseImage.class)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                .putExtra(ConstantUtils.INTENT_KEY_IMAGE, image));
     }
 
     @Override

@@ -124,4 +124,10 @@ dependencies {
     //
 
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+
+    //
+    // Zoom image view.
+    //
+
+    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
 }
