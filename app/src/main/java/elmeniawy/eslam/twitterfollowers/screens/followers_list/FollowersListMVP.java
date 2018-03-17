@@ -31,6 +31,12 @@ public interface FollowersListMVP {
 
         void showError();
 
+        void showInternetError();
+
+        void showGetError();
+
+        int getFollowersListSize();
+
         void clearFollowers();
 
         void addFollowers(List<FollowerViewModel> followers);
@@ -60,6 +66,8 @@ public interface FollowersListMVP {
         void langChangeClicked();
 
         void langSelected(int previousItem, int newItem);
+
+        void recyclerScrolled(int mOnScreenItems, int mTotalItemsInList, int mFirstVisibleItem);
     }
 
     interface Model {
@@ -69,7 +77,7 @@ public interface FollowersListMVP {
 
         long getUserId(MySharedPreferences sharedPreferences);
 
-        Call<FollowersResponse> getFollowers(long userId);
+        Call<FollowersResponse> getFollowers(long userId, long cursor);
 
         void saveFollowers(List<User> followers);
     }

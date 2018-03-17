@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -146,6 +147,10 @@ public class ActivityFollowersList extends BaseActivity implements FollowersList
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 Timber.i("Recycler view onScrolled.");
+
+                presenter.recyclerScrolled(recyclerView.getChildCount(),
+                        gridLayoutManager.getItemCount(),
+                        gridLayoutManager.findFirstVisibleItemPosition());
             }
         });
     }
@@ -215,6 +220,21 @@ public class ActivityFollowersList extends BaseActivity implements FollowersList
     }
 
     @Override
+    public void showInternetError() {
+        showToast(noInternet);
+    }
+
+    @Override
+    public void showGetError() {
+        showToast(errorGetFollowers);
+    }
+
+    @Override
+    public int getFollowersListSize() {
+        return followersList.size();
+    }
+
+    @Override
     public void clearFollowers() {
         followersList.clear();
         followersListAdapter.notifyDataSetChanged();
@@ -266,5 +286,9 @@ public class ActivityFollowersList extends BaseActivity implements FollowersList
     @Override
     public void reCreateActivity() {
         recreate();
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

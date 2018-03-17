@@ -35,15 +35,14 @@ public class FollowersListRepository implements Repository {
     }
 
     @Override
-    public Call<FollowersResponse> getFollowers(long userId) {
+    public Call<FollowersResponse> getFollowers(long userId, long cursor) {
         TwitterSession session = TwitterCore.getInstance().getSessionManager().getActiveSession();
         TwitterApiServices apiClients = new TwitterApiServices(session);
 
         return apiClients
                 .getFollowersService()
                 .getFollowers(userId,
-                        true,
-                        false);
+                        cursor);
     }
 
     @Override

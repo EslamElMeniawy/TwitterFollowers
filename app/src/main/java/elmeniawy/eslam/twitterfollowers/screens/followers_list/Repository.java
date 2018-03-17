@@ -20,7 +20,7 @@ public interface Repository {
 
     long getUserId(MySharedPreferences sharedPreferences);
 
-    Call<FollowersResponse> getFollowers(long userId);
+    Call<FollowersResponse> getFollowers(long userId, long cursor);
 
     void saveFollowers(List<User> followers);
 }

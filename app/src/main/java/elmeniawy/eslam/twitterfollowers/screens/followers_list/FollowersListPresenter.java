@@ -34,6 +34,8 @@ public class FollowersListPresenter implements FollowersListMVP.Presenter {
     private FollowersListMVP.View view;
 
     private FollowersListMVP.Model model;
+    private boolean mLoadingItems = true;
+    private long cursor = -1;
 
     FollowersListPresenter(FollowersListMVP.Model model) {
         this.model = model;
@@ -46,12 +48,14 @@ public class FollowersListPresenter implements FollowersListMVP.Presenter {
 
     @Override
     public void loadFollowers() {
-        loadFirstTime();
+        cursor = -1;
+        getFollowers();
     }
 
     @Override
     public void refreshFollowers() {
-        loadFirstTime();
+        cursor = -1;
+        getFollowers();
     }
 
     @Override
@@ -100,12 +104,26 @@ public class FollowersListPresenter implements FollowersListMVP.Presenter {
         }
     }
 
-    private void loadFirstTime() {
+    @Override
+    public void recyclerScrolled(int mOnScreenItems, int mTotalItemsInList, int mFirstVisibleItem) {
         if (view != null) {
+            int mVisibleThreshold = 1;
+
+            if (!mLoadingItems &&
+                    (mTotalItemsInList - mOnScreenItems) <=
+                            (mFirstVisibleItem + mVisibleThreshold)) {
+                getFollowers();
+            }
+        }
+    }
+
+    private void getFollowers() {
+        if (view != null) {
+            mLoadingItems = true;
             view.showLoading();
 
             Call<FollowersResponse> call = model
-                    .getFollowers(model.getUserId(view.getSharedPreferences()));
+                    .getFollowers(model.getUserId(view.getSharedPreferences()), cursor);
 
             call.enqueue(new Callback<FollowersResponse>() {
                 @SuppressWarnings("ConstantConditions")
@@ -113,51 +131,89 @@ public class FollowersListPresenter implements FollowersListMVP.Presenter {
                 public void onResponse(@NonNull Call<FollowersResponse> call,
                                        @NonNull Response<FollowersResponse> response) {
                     Timber.i("Response: %s.", response.toString());
+                    mLoadingItems = false;
 
                     if (response.body() != null) {
                         Timber.i("Response body: %s.", gson.toJson(response.body()));
 
                         if (response.body().getUsers() != null &&
                                 response.body().getUsers().size() > 0) {
-                            view.clearFollowers();
+                            if (cursor == -1) {
+                                view.clearFollowers();
+                            }
+
                             handleResults(response.body().getUsers());
                         } else {
-                            view.setNoFollowers();
+                            if (cursor == -1) {
+                                view.setNoFollowers();
+                                view.hideList();
+                                view.showError();
+                            }
+
                             view.hideLoading();
-                            view.hideList();
-                            view.showError();
+                        }
+
+                        if (response.body().getNextCursor() != null) {
+                            cursor = response.body().getNextCursor();
                         }
                     } else {
-                        showGetError();
+                        showGetError(cursor);
                     }
                 }
 
                 @Override
                 public void onFailure(@NonNull Call<FollowersResponse> call, @NonNull Throwable t) {
                     Timber.e(t);
+                    mLoadingItems = false;
 
                     if (t instanceof ConnectException
                             || t instanceof SocketTimeoutException
                             || t instanceof UnknownHostException
                             || t instanceof TimeoutException) {
-                        view.setInternetError();
+                        if (cursor == -1 && view.getFollowersListSize() <= 0) {
+                            //
+                            // Show internet error through text view.
+                            //
+
+                            view.setInternetError();
+                            view.hideList();
+                            view.showError();
+                        } else {
+                            //
+                            // Show internet error through toast.
+                            //
+
+                            view.showInternetError();
+                        }
+
                         view.hideLoading();
-                        view.hideList();
-                        view.showError();
                     } else {
-                        showGetError();
+                        showGetError(cursor);
                     }
                 }
             });
         }
     }
 
-    private void showGetError() {
+    private void showGetError(long cursor) {
         if (view != null) {
-            view.setGetError();
+            if (cursor == -1 && view.getFollowersListSize() <= 0) {
+                //
+                // Show get error through text view.
+                //
+
+                view.setGetError();
+                view.hideList();
+                view.showError();
+            } else {
+                //
+                // Show get error through toast.
+                //
+
+                view.showGetError();
+            }
+
             view.hideLoading();
-            view.hideList();
-            view.showError();
         }
     }
 

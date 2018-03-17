@@ -36,8 +36,8 @@ public class FollowersListModel implements FollowersListMVP.Model {
     }
 
     @Override
-    public Call<FollowersResponse> getFollowers(long userId) {
-        return repository.getFollowers(userId);
+    public Call<FollowersResponse> getFollowers(long userId, long cursor) {
+        return repository.getFollowers(userId, cursor);
     }
 
     @Override

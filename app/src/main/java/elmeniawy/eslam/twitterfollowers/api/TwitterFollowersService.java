@@ -15,13 +15,11 @@ public interface TwitterFollowersService {
     /**
      * This method id used to get the List of TWITTER FOLLOWERS.
      *
-     * @param userId Get UserId after login and pass it here
-     * @param var1   Weather to skip status accept TRUE/FALSE
-     * @param var2   Weather to include Entities accept TRUE/FALSE
+     * @param userId Get UserId after login and pass it here.
+     * @param cursor The cursor of page to get.
      * @return Call object of type FOLLOWERS.
      */
-    @GET("/1.1/followers/list.json")
+    @GET("/1.1/followers/list.json?skip_status=true&include_user_entities=false")
     Call<FollowersResponse> getFollowers(@Query("user_id") Long userId,
-                                         @Query("skip_status") Boolean var1,
-                                         @Query("include_user_entities") Boolean var2);
+                                         @Query("cursor") Long cursor);
 }
