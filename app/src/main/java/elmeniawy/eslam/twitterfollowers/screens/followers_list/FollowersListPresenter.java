@@ -15,6 +15,7 @@ import java.util.concurrent.TimeoutException;
 
 import elmeniawy.eslam.twitterfollowers.api.model.FollowersResponse;
 import elmeniawy.eslam.twitterfollowers.api.model.User;
+import elmeniawy.eslam.twitterfollowers.storage.database.entities.FollowerEntity;
 import elmeniawy.eslam.twitterfollowers.utils.ConstantUtils;
 import io.reactivex.disposables.Disposable;
 import retrofit2.Call;
@@ -149,11 +150,7 @@ public class FollowersListPresenter implements FollowersListMVP.Presenter {
 
                         if (response.body().getUsers() != null &&
                                 response.body().getUsers().size() > 0) {
-                            if (cursor == -1) {
-                                view.clearFollowers();
-                            }
-
-                            handleResults(response.body().getUsers());
+                            handleResults(response.body().getUsers(), cursor);
                         } else {
                             if (cursor == -1) {
                                 view.setNoFollowers();
@@ -228,28 +225,52 @@ public class FollowersListPresenter implements FollowersListMVP.Presenter {
         }
     }
 
-    private void handleResults(List<User> followers) {
+    private void handleResults(List<User> followers, long oldCursor) {
         if (view != null) {
             //
-            // Map followers to view model
+            // Map followers to view models and entities.
             //
 
             List<FollowerViewModel> followerViewModels = new ArrayList<>();
+            List<FollowerEntity> followerEntities = new ArrayList<>();
 
             for (User follower :
                     followers) {
                 Timber.i("Converting: %s.", gson.toJson(follower));
                 FollowerViewModel followerViewModel = new FollowerViewModel();
+                FollowerEntity followerEntity = new FollowerEntity();
                 followerViewModel.setId(follower.getId());
+                followerEntity.setId(follower.getId());
                 followerViewModel.setName(follower.getName());
+                followerEntity.setName(follower.getName());
                 followerViewModel.setDescription(follower.getDescription());
+                followerEntity.setDescription(follower.getDescription());
                 followerViewModel.setProfileBanner(follower.getProfileBanner());
+                followerEntity.setProfileBanner(follower.getProfileBanner());
 
                 followerViewModel.setProfileImage(follower.getProfileImageUrlHttps()
                         .replace("_normal", "_bigger"));
 
+                followerEntity.setProfileImage(follower.getProfileImageUrlHttps()
+                        .replace("_normal", "_bigger"));
+
                 followerViewModels.add(followerViewModel);
+                followerEntities.add(followerEntity);
             }
+
+            //
+            // If first page then clear view followers and save data to database.
+            //
+
+            if (oldCursor == -1) {
+                Timber.i("First page.\nClearing view followers.\nSaving data to database.");
+                view.clearFollowers();
+                model.saveFollowers(view.getDatabase(), followerEntities);
+            }
+
+            //
+            // Set results to view.
+            //
 
             view.addFollowers(followerViewModels);
             view.hideLoading();
