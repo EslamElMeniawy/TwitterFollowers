@@ -181,6 +181,12 @@ public class ActivityFollowersList extends BaseActivity implements FollowersList
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.rxUnsubscribe();
+    }
+
+    @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 

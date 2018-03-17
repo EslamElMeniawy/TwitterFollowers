@@ -3,8 +3,10 @@ package elmeniawy.eslam.twitterfollowers.screens.followers_list;
 import java.util.List;
 
 import elmeniawy.eslam.twitterfollowers.api.model.FollowersResponse;
-import elmeniawy.eslam.twitterfollowers.api.model.User;
+import elmeniawy.eslam.twitterfollowers.storage.database.ApplicationDatabase;
+import elmeniawy.eslam.twitterfollowers.storage.database.entities.FollowerEntity;
 import elmeniawy.eslam.twitterfollowers.storage.preferences.MySharedPreferences;
+import io.reactivex.Maybe;
 import retrofit2.Call;
 
 /**
@@ -41,7 +43,17 @@ public class FollowersListModel implements FollowersListMVP.Model {
     }
 
     @Override
-    public void saveFollowers(List<User> followers) {
-        repository.saveFollowers(followers);
+    public void saveFollowers(ApplicationDatabase database, List<FollowerEntity> followers) {
+        repository.saveFollowers(database, followers);
+    }
+
+    @Override
+    public Maybe<List<FollowerEntity>> getFollowersOffline(ApplicationDatabase database) {
+        return repository.getFollowersOffline(database);
+    }
+
+    @Override
+    public void rxUnsubscribe() {
+        repository.rxUnsubscribe();
     }
 }

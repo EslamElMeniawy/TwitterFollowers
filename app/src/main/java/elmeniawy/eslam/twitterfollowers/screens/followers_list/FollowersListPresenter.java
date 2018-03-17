@@ -16,6 +16,7 @@ import java.util.concurrent.TimeoutException;
 import elmeniawy.eslam.twitterfollowers.api.model.FollowersResponse;
 import elmeniawy.eslam.twitterfollowers.api.model.User;
 import elmeniawy.eslam.twitterfollowers.utils.ConstantUtils;
+import io.reactivex.disposables.Disposable;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -29,13 +30,14 @@ import timber.log.Timber;
 
 public class FollowersListPresenter implements FollowersListMVP.Presenter {
     private Gson gson = new Gson();
+    private boolean mLoadingItems = true;
+    private long cursor = -1;
+    private Disposable disposable = null;
 
     @Nullable
     private FollowersListMVP.View view;
 
     private FollowersListMVP.Model model;
-    private boolean mLoadingItems = true;
-    private long cursor = -1;
 
     FollowersListPresenter(FollowersListMVP.Model model) {
         this.model = model;
@@ -114,6 +116,15 @@ public class FollowersListPresenter implements FollowersListMVP.Presenter {
                             (mFirstVisibleItem + mVisibleThreshold)) {
                 getFollowers();
             }
+        }
+    }
+
+    @Override
+    public void rxUnsubscribe() {
+        model.rxUnsubscribe();
+
+        if (disposable != null && disposable.isDisposed()) {
+            disposable.dispose();
         }
     }
 

@@ -3,8 +3,10 @@ package elmeniawy.eslam.twitterfollowers.screens.followers_list;
 import java.util.List;
 
 import elmeniawy.eslam.twitterfollowers.api.model.FollowersResponse;
-import elmeniawy.eslam.twitterfollowers.api.model.User;
+import elmeniawy.eslam.twitterfollowers.storage.database.ApplicationDatabase;
+import elmeniawy.eslam.twitterfollowers.storage.database.entities.FollowerEntity;
 import elmeniawy.eslam.twitterfollowers.storage.preferences.MySharedPreferences;
+import io.reactivex.Maybe;
 import retrofit2.Call;
 
 /**
@@ -22,5 +24,9 @@ public interface Repository {
 
     Call<FollowersResponse> getFollowers(long userId, long cursor);
 
-    void saveFollowers(List<User> followers);
+    void saveFollowers(ApplicationDatabase database, List<FollowerEntity> followers);
+
+    Maybe<List<FollowerEntity>> getFollowersOffline(ApplicationDatabase database);
+
+    void rxUnsubscribe();
 }
