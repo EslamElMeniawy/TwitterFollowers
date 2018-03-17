@@ -26,14 +26,10 @@ import elmeniawy.eslam.twitterfollowers.R;
 import elmeniawy.eslam.twitterfollowers.helpers.BaseActivity;
 import elmeniawy.eslam.twitterfollowers.helpers.CustomAppBarLayout;
 import elmeniawy.eslam.twitterfollowers.root.MyApplication;
-import elmeniawy.eslam.twitterfollowers.storage.preferences.MySharedPreferences;
 import elmeniawy.eslam.twitterfollowers.utils.ConstantUtils;
 import timber.log.Timber;
 
 public class ActivityFollowerInfo extends BaseActivity implements FollowerInfoMVP.View {
-    @Inject
-    MySharedPreferences mySharedPreferences;
-
     @Inject
     FollowerInfoMVP.Presenter presenter;
 
@@ -160,16 +156,6 @@ public class ActivityFollowerInfo extends BaseActivity implements FollowerInfoMV
     }
 
     @Override
-    public MySharedPreferences getSharedPreferences() {
-        return mySharedPreferences;
-    }
-
-    @Override
-    public void showLoading() {
-        loading.setVisibility(View.VISIBLE);
-    }
-
-    @Override
     public void hideLoading() {
         loading.setVisibility(View.GONE);
     }
@@ -177,11 +163,6 @@ public class ActivityFollowerInfo extends BaseActivity implements FollowerInfoMV
     @Override
     public void showError() {
         tvError.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void hideError() {
-        tvError.setVisibility(View.GONE);
     }
 
     @Override
@@ -232,11 +213,6 @@ public class ActivityFollowerInfo extends BaseActivity implements FollowerInfoMV
     @Override
     public void hideProfile() {
         profile.setVisibility(View.GONE);
-    }
-
-    @Override
-    public void showTweets() {
-        recyclerTweets.setVisibility(View.VISIBLE);
     }
 
     @Override

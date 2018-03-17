@@ -4,7 +4,6 @@ import com.twitter.sdk.android.core.models.Tweet;
 
 import java.util.List;
 
-import elmeniawy.eslam.twitterfollowers.storage.preferences.MySharedPreferences;
 import retrofit2.Call;
 
 /**
@@ -18,11 +17,6 @@ public class FollowerInfoModel implements FollowerInfoMVP.Model {
 
     FollowerInfoModel(Repository repository) {
         this.repository = repository;
-    }
-
-    @Override
-    public String getLang(MySharedPreferences sharedPreferences) {
-        return repository.getLang(sharedPreferences);
     }
 
     @Override

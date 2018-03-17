@@ -7,8 +7,6 @@ import com.twitter.sdk.android.core.services.StatusesService;
 
 import java.util.List;
 
-import elmeniawy.eslam.twitterfollowers.storage.preferences.MySharedPreferences;
-import elmeniawy.eslam.twitterfollowers.utils.PreferencesUtils;
 import retrofit2.Call;
 
 /**
@@ -18,11 +16,6 @@ import retrofit2.Call;
  */
 
 public class FollowerInfoRepository implements Repository {
-    @Override
-    public String getLang(MySharedPreferences sharedPreferences) {
-        return sharedPreferences.getString(PreferencesUtils.KEY_LANG);
-    }
-
     @Override
     public Call<List<Tweet>> getTweets(long userId) {
         TwitterApiClient twitterApiClient = TwitterCore.getInstance().getApiClient();

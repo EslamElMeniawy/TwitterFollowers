@@ -9,11 +9,13 @@ import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
 
 import elmeniawy.eslam.twitterfollowers.api.model.FollowersResponse;
 import elmeniawy.eslam.twitterfollowers.api.model.User;
+import elmeniawy.eslam.twitterfollowers.utils.ConstantUtils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -56,6 +58,45 @@ public class FollowersListPresenter implements FollowersListMVP.Presenter {
     public void followerClicked(FollowerViewModel follower) {
         if (view != null) {
             view.openFollowerInfo(follower);
+        }
+    }
+
+    @Override
+    public void langChangeClicked() {
+        if (view != null) {
+            String[] languageList = {view.getArabicString(), view.getEnglishString()};
+            Timber.i("Language list: %s.", Arrays.toString(languageList));
+            String currentLang = model.getLang(view.getSharedPreferences());
+            Timber.i("Current user language: %s.", currentLang);
+            int checkedItem = 1;
+
+            switch (currentLang) {
+                case ConstantUtils.LANG_AR:
+                    checkedItem = 0;
+                    break;
+            }
+
+            Timber.i("Checked item position: %d.", checkedItem);
+            view.showLangDialog(languageList, checkedItem);
+        }
+    }
+
+    @Override
+    public void langSelected(int previousItem, int newItem) {
+        Timber.i("Previous item position: %d.\nNew item position: %d.",
+                previousItem, newItem);
+
+        if (view != null && previousItem != newItem) {
+            switch (newItem) {
+                case 0:
+                    model.saveLang(view.getSharedPreferences(), ConstantUtils.LANG_AR);
+                    break;
+                case 1:
+                    model.saveLang(view.getSharedPreferences(), ConstantUtils.LANG_EN);
+                    break;
+            }
+
+            view.reCreateActivity();
         }
     }
 

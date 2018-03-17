@@ -21,8 +21,6 @@ public interface FollowersListMVP {
 
         void hideLoading();
 
-        void showList();
-
         void hideList();
 
         void setInternetError();
@@ -33,8 +31,6 @@ public interface FollowersListMVP {
 
         void showError();
 
-        void hideError();
-
         void clearFollowers();
 
         void addFollowers(List<FollowerViewModel> followers);
@@ -42,6 +38,14 @@ public interface FollowersListMVP {
         void openFollowerInfo(FollowerViewModel follower);
 
         void addOpenAnimation();
+
+        String getArabicString();
+
+        String getEnglishString();
+
+        void showLangDialog(String[] languageList, int checkedItem);
+
+        void reCreateActivity();
     }
 
     interface Presenter {
@@ -52,6 +56,10 @@ public interface FollowersListMVP {
         void refreshFollowers();
 
         void followerClicked(FollowerViewModel follower);
+
+        void langChangeClicked();
+
+        void langSelected(int previousItem, int newItem);
     }
 
     interface Model {

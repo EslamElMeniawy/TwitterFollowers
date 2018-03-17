@@ -4,7 +4,6 @@ import com.twitter.sdk.android.core.models.Tweet;
 
 import java.util.List;
 
-import elmeniawy.eslam.twitterfollowers.storage.preferences.MySharedPreferences;
 import retrofit2.Call;
 
 /**
@@ -14,7 +13,5 @@ import retrofit2.Call;
  */
 
 public interface Repository {
-    String getLang(MySharedPreferences sharedPreferences);
-
     Call<List<Tweet>> getTweets(long userId);
 }

@@ -3,6 +3,7 @@ package elmeniawy.eslam.twitterfollowers.screens.followers_list;
 import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -54,6 +55,9 @@ public class ActivityFollowersList extends BaseActivity implements FollowersList
     // Bind strings.
     //
 
+    @BindString(R.string.app_name)
+    String title;
+
     @BindString(R.string.no_internet)
     String noInternet;
 
@@ -62,6 +66,12 @@ public class ActivityFollowersList extends BaseActivity implements FollowersList
 
     @BindString(R.string.no_followers)
     String noFollowers;
+
+    @BindString(R.string.ar)
+    String arabic;
+
+    @BindString(R.string.en)
+    String english;
 
     private GridLayoutManager gridLayoutManager;
     private FollowersListAdapter followersListAdapter;
@@ -83,6 +93,14 @@ public class ActivityFollowersList extends BaseActivity implements FollowersList
         //
 
         ButterKnife.bind(this);
+
+        //
+        // Set activity title.
+        //
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(title);
+        }
 
         //
         // Set swipe refresh layout refresh listener.
@@ -149,6 +167,7 @@ public class ActivityFollowersList extends BaseActivity implements FollowersList
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_lang) {
+            presenter.langChangeClicked();
             return true;
         }
 
@@ -168,11 +187,6 @@ public class ActivityFollowersList extends BaseActivity implements FollowersList
     @Override
     public void hideLoading() {
         swipeRefreshLayout.setRefreshing(false);
-    }
-
-    @Override
-    public void showList() {
-        swipeRefreshLayout.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -201,11 +215,6 @@ public class ActivityFollowersList extends BaseActivity implements FollowersList
     }
 
     @Override
-    public void hideError() {
-        tvError.setVisibility(View.GONE);
-    }
-
-    @Override
     public void clearFollowers() {
         followersList.clear();
         followersListAdapter.notifyDataSetChanged();
@@ -228,5 +237,34 @@ public class ActivityFollowersList extends BaseActivity implements FollowersList
     @Override
     public void addOpenAnimation() {
         overridePendingTransition(R.anim.bottom_up, R.anim.fadeout);
+    }
+
+    @Override
+    public String getArabicString() {
+        return arabic;
+    }
+
+    @Override
+    public String getEnglishString() {
+        return english;
+    }
+
+    @Override
+    public void showLangDialog(String[] languageList, int checkedItem) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder
+                .setTitle(R.string.change_lang)
+                .setSingleChoiceItems(languageList, checkedItem, (dialog, which) -> {
+                    presenter.langSelected(checkedItem, which);
+                    dialog.dismiss();
+                })
+                .create()
+                .show();
+    }
+
+    @Override
+    public void reCreateActivity() {
+        recreate();
     }
 }

@@ -5,7 +5,6 @@ import com.twitter.sdk.android.core.models.Tweet;
 import java.util.List;
 
 import elmeniawy.eslam.twitterfollowers.screens.followers_list.FollowerViewModel;
-import elmeniawy.eslam.twitterfollowers.storage.preferences.MySharedPreferences;
 import retrofit2.Call;
 
 /**
@@ -16,15 +15,9 @@ import retrofit2.Call;
 
 public interface FollowerInfoMVP {
     interface View {
-        MySharedPreferences getSharedPreferences();
-
-        void showLoading();
-
         void hideLoading();
 
         void showError();
-
-        void hideError();
 
         void setInternetError();
 
@@ -41,8 +34,6 @@ public interface FollowerInfoMVP {
         void showProfile();
 
         void hideProfile();
-
-        void showTweets();
 
         void hideTweets();
 
@@ -78,8 +69,6 @@ public interface FollowerInfoMVP {
     }
 
     interface Model {
-        String getLang(MySharedPreferences sharedPreferences);
-
         Call<List<Tweet>> getTweets(long userId);
     }
 }
