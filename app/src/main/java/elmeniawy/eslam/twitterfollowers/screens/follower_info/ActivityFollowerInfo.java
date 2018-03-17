@@ -47,9 +47,6 @@ public class ActivityFollowerInfo extends BaseActivity implements FollowerInfoMV
     @BindView(R.id.app_bar)
     CustomAppBarLayout background;
 
-    /*@BindView(R.id.fab)
-    FloatingActionButton profile;*/
-
     @BindView(R.id.iv_profile)
     CircleImageView profile;
 
