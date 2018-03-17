@@ -43,6 +43,8 @@ public interface FollowerInfoMVP {
 
         void openImage(String image);
 
+        void addOpenAnimation();
+
         void closeActivity();
 
         void addCloseAnimation();

@@ -243,6 +243,11 @@ public class ActivityFollowerInfo extends BaseActivity implements FollowerInfoMV
     }
 
     @Override
+    public void addOpenAnimation() {
+        overridePendingTransition(R.anim.bottom_up, R.anim.fadeout);
+    }
+
+    @Override
     public void closeActivity() {
         ActivityFollowerInfo.this.finish();
     }

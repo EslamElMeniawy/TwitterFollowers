@@ -136,6 +136,7 @@ public class FollowerInfoPresenter implements FollowerInfoMVP.Presenter {
         if (view != null && follower != null &&
                 follower.getProfileImage() != null && !follower.getProfileImage().isEmpty()) {
             view.openImage(follower.getProfileImage().replace("_bigger", ""));
+            view.addOpenAnimation();
         }
     }
 
@@ -144,6 +145,7 @@ public class FollowerInfoPresenter implements FollowerInfoMVP.Presenter {
         if (view != null && follower != null &&
                 follower.getProfileBanner() != null && !follower.getProfileBanner().isEmpty()) {
             view.openImage(follower.getProfileBanner());
+            view.addOpenAnimation();
         }
     }
 
